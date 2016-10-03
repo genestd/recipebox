@@ -2,7 +2,7 @@ var starter_recipes = [
   { name: "Pizza",
     description: "A classic italian dish that can be personalized with a variety of toppings.  Traditional pizza includes dough, sauce and cheese topped with meats or vegetables. ",
     group: 1,
-    img: "/icons/pizza.jpg",
+    img: "./icons/pizza.jpg",
     ingredients: [
       "1 ball of dough",
       "1 jar of tomato sauce",
@@ -13,7 +13,7 @@ var starter_recipes = [
   },
   {
     name: "Split Pea Soup",
-    img: "/icons/peasoup.jpg",
+    img: "./icons/peasoup.jpg",
     description: "A fall classic.  Skip the ham hock for a vegetarian special or include it for a smoky, meaty undertone.",
     group: 2,
     ingredients: [
@@ -28,7 +28,7 @@ var starter_recipes = [
     name: "Fruit Salad",
     description: "Delicious and healthy, fruit salad is sure to please.  Ingredients are only limited by your imagination and what is in season.",
     group: 3,
-    img: "/icons/fruitsalad.jpg",
+    img: "./icons/fruitsalad.jpg",
     ingredients: [
       "1 Apple",
       "1 Orange",
@@ -41,7 +41,7 @@ var starter_recipes = [
     name: "Roasted Root Vegetables",
     description: "Roasted root vegetables make a hearty and nutritious side dish.  Try adding beets, carrots and brussel sprouts for a splash of fall color.",
     group: 4,
-    img: "/icons/roastedveg.jpg",
+    img: "./icons/roastedveg.jpg",
     ingredients: [
       "6 Carrots",
       "2 Potatoes",
@@ -56,7 +56,7 @@ var starter_recipes = [
     name: "Berry Pie",
     description: "Pies are a delicious way to use berries when they are in season.  Blueberries, strawberries, blackberries or any mixture will make a delicious pie.",
     group: 5,
-    img: "/icons/berrypie.jpg",
+    img: "./icons/berrypie.jpg",
     ingredients: [
       "2 lbs Fresh Berries",
       "1 Pie crust",
