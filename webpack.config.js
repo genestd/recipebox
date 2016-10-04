@@ -15,8 +15,11 @@ module.exports={
   ],
   output: {
     path: __dirname + '/dist',
-    publicPath: 'https://github.com/genestd/recipebox',
+    //publicPath: 'https://github.com/genestd/recipebox',
     filename: "index_bundle.js"
+  },
+  devServer: {
+    contentBase: __dirname + '/dist'
   },
   module: {
     loaders: [

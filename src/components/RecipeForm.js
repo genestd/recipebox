@@ -31,47 +31,22 @@ export default class RecipeForm extends React.Component{
     });
   }
 
-  handleNameChange = (event) =>{
-    this.setState({
-      name: event.target.value
-    });
+  handleInputChange = (event) =>{
+    let nextState = {};
+    nextState[event.target.name] = event.target.value;
+    this.setState(nextState);
   }
-
-  handleDescChange = (event) =>{
-    this.setState({
-      description: event.target.value
-    })
-  }
-
-  handleIngredientChange = (event) =>{
-    this.setState({
-      ingredients: event.target.value
-    })
-  }
-
-  handleUrlChange = (event) =>{
-    this.setState({
-      url: event.target.value
-    })
-  }
-
-  handleDirectionChange = (event) =>{
-    this.setState({
-      directions: event.target.value
-    })
-
-  }
-
 
   render(){
     return (
       <div className="recipeForm">
         <div className="row1">
         <TextField name="name"
+                  value={this.state.name}
                hintText="Recipe Name"
               errorText="*Required"
                   style={styles.fl}
-                  onChange={this.handleNameChange}/>
+                  onChange={(e)=>this.handleInputChange(e)}/>
         <DropDownMenu value={this.state.group} onChange={this.handleGroupChange} style={styles.fl} >
           {this.props.categories.map( function(result, myIndex){
             var dsbld = (myIndex===0 ? true : false );
@@ -93,28 +68,29 @@ export default class RecipeForm extends React.Component{
                  hintText="Recipe Description"
                  multiLine={true}
                  style={styles.fl}
-                 onChange={this.handleDescChange}
+                 onChange={(e)=>this.handleInputChange(e)}
                  />
       <TextField name="ingredients"
                  value={this.state.ingredients}
                  hintText="Type each ingredient on a separate line"
                  multiLine={true}
                  style={styles.fl}
-                 onChange={this.handleIngredientChange}/>
+                 onChange={(e)=>this.handleInputChange(e)}/>
       </div>
       <br/>
       <br/>
-      <TextField name="Image URL"
+      <TextField name="url"
                  value={this.state.url}
                  hintText="Link to Image"
-                 onChange={this.handleUrlChange}/>
+                 onChange={(e)=>this.handleInputChange(e)}/>
       <br/>
       <br/>
       <TextField name="directions"
                  value={this.state.directions}
                  hintText="Cooking Instructions"
                  multiLine={true}
-                 onChange={this.handleDirectionChange} />
+                 onChange={(e)=>this.handleInputChange(e)}
+                 fullWidth={true} />
 
       </div>
     )

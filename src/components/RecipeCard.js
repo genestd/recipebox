@@ -144,7 +144,6 @@ export default class RecipeCard extends React.Component{
                      cardEditStyle: styles.disallowCardEdit
                     });
     } else {
-      console.log(hdrState);
       this.setState({expanded: expanded,
                      crdHeaderState: hdrState
                     });

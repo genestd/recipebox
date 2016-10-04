@@ -18,7 +18,6 @@ export default class RecipeBox extends React.Component{
         recipes = starter_recipes;
       } else {
         recipes = JSON.parse(tempArray);
-        console.log("parsed", recipes);
       }
     } else {
       recipes = starter_recipes;
