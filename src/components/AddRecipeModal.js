@@ -9,8 +9,10 @@ import RecipeForm from './RecipeForm';
 const toolTip = (<div>Add a recipe</div>);
 const styles = {
   md24: {fontSize:"1.5em",
-         textAlign: "right" }
+         textAlign: "right" },
+  onTop: {zIndex: "100"}
 }
+
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -63,7 +65,9 @@ export default class AddRecipeModal extends React.Component {
     return (
       <div>
         <IconButton onTouchTap={this.handleOpen}
-                    tooltip={toolTip}>
+                    tooltip={toolTip}
+                    tooltipPosition="bottom-center"
+                    tooltipStyles={styles.onTop}>
           <FontIcon className='material-icons'
                     style={styles.md24} >add_circle_outline</FontIcon>
         </IconButton>

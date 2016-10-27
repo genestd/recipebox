@@ -5,24 +5,19 @@ import {Card, CardHeader, CardActions, CardText} from 'material-ui/Card';
 import IngredientChips from '../components/IngredientChips';
 import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
+import FontIcon from 'material-ui/FontIcon';
+
 const styles = {
-  aligned: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center"
-  },
   imageLeft: {
     flex: "0 0 auto",
     marginRight: "1em",
     marginLeft: "auto",
-    padding: "0px"
-  },
-  imageRight: {
-    flex: "1",
-    marginLeft: "auto",
-    marginRight: "1em",
+    padding: "0px",
+    width: "WebkitFitContent"
   },
   disallowHdrEdit:{
+    padding: "0",
+    overflow: "visible",
     color: "black",
     margin: "0px",
     cursor: "pointer",
@@ -50,12 +45,14 @@ const styles = {
     width: "100%",
     display: "flex",
     alignItems: "center",
+    paddingRight: "0",
   },
   openCardState: {
     width: "100%",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#ccc"
+    backgroundColor: "#ccc",
+    paddingRight: "0",
   }
 };
 
@@ -132,6 +129,17 @@ export default class RecipeCard extends React.Component{
                               secondary={true}>Cancel</RaisedButton>
               </div>
       )
+    } else {
+      return (
+        <CardActions style={styles.imageLeft} className="smallButtons">
+          <RaisedButton primary={true}
+                          label="Edit"
+                     onTouchTap={(e)=>{this.handleEdit(this.props.recipe, e)}} />
+          <RaisedButton label="Delete"
+                    secondary={true}
+                   onTouchTap={(e)=>{this.handleDelete(this.props.recipe,e)}} />
+        </CardActions>
+      )
     }
   }
 
@@ -182,15 +190,16 @@ export default class RecipeCard extends React.Component{
                             name="name"
                             inputStyle={this.state.hdrEditStyle}
                             onTouchTap={(e)=>{this.handleTouchTap(e)}}
-                            onChange={this.handleChangeName}/>}
+                            onChange={this.handleChangeName}
+                            className="crdTitle"
+                            />}
           showExpandableButton={true}
           avatar={this.props.recipe.img}
           className='cardHdr'
          >
-          <CardActions style={styles.imageLeft}>
+          <CardActions style={styles.imageLeft} className="actionBtns">
             <FlatButton label="Edit" onTouchTap={(e)=>{this.handleEdit(this.props.recipe, e)}} />
-            <FlatButton label="Delete" onTouchTap={(e)=>{this.handleDelete(this.props.recipe,e)}}
-            />
+            <FlatButton label="Delete" onTouchTap={(e)=>{this.handleDelete(this.props.recipe,e)}} />
           </CardActions>
        </CardHeader>
        <CardText expandable={true}>
@@ -201,7 +210,8 @@ export default class RecipeCard extends React.Component{
                      fullWidth={true}
                      multiLine={true}
                      textareaStyle={this.state.cardEditStyle}
-                     onChange={this.handleChangeDescription}/>
+                     onChange={this.handleChangeDescription}
+                    />
          <Subheader>Ingredients</Subheader>
             <IngredientChips data={this.props.recipe.ingredients}
                              canDelete={this.state.allowEdit}

@@ -2,7 +2,6 @@ import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs';
 import  SwipeableViews from 'react-swipeable-views';
 import RecipeGroup from '../containers/RecipeGroup';
-import {Link} from 'react-router';
 import AddRecipeModal from './AddRecipeModal';
 
 export default class RecipeTabs extends React.Component{

@@ -11,6 +11,9 @@ export default class RecipeBox extends React.Component{
     var recipes = [];
     var storage = false;
 
+    /* Check if local storage enabled.  If so, get the stored recipes.
+       If no recipes are stored, then use the default "starter_recipes" provided in the app
+    */
     if (this.storageAvailable('localStorage')){
       storage = true;
       var tempArray = localStorage.getItem('stored_recipes');
@@ -33,12 +36,15 @@ export default class RecipeBox extends React.Component{
     };
   }
 
+  /* Whenever state updates, save the recipes to local storage */
   componentDidUpdate(){
     if( this.state.storage ){
       localStorage.setItem('stored_recipes', JSON.stringify(this.state.recipes));
     }
   }
 
+  /* RecipeTabs is a SwipeableViews obect that displays recipes by category */
+  /* The snackbar object is used to display an undo action when user deletes a recipe */
   render(){
     return(
       <div className="recipeBox">
@@ -59,10 +65,13 @@ export default class RecipeBox extends React.Component{
     )
   }
 
+  /* When user deletes a recipe, remove it from the recipe array. deletedRec holds the recipe in
+   * case the user chooses undo from the Snackbar object
+   */
   deleteRecipe(rec){
     var tempArray = this.state.recipes;
-    for(var i=0; i<tempArray.length; i++){
-      if( tempArray[i] === rec){
+    for(var i=0; i < tempArray.length; i++){
+      if ( tempArray[i] === rec ){
         tempArray.splice(i, 1);
       }
     }
@@ -73,9 +82,14 @@ export default class RecipeBox extends React.Component{
     });
   }
 
+  /* Function to add a recipe to the app/local storage.  A null img attribute will default to
+     one the food icons for the recipes category
+      @param {object} - an object representing the new recipe to add
+      @return  {void} - no return value
+  */
   addRecipe(rec){
     if (rec.img === "" ){
-      for( var i=0; i<this.props.categories.length; i++){
+      for( var i=0; i < this.props.categories.length; i++){
         if (this.props.categories[i].id === rec.group ){
           rec.img = this.props.categories[i].url
         }
@@ -90,7 +104,7 @@ export default class RecipeBox extends React.Component{
 
   saveRecipe(newRec, oldRec){
     var tempArray = this.state.recipes;
-    for( var i=0; i<tempArray.length; i++){
+    for( var i=0; i   < tempArray.length; i++){
       if( oldRec === tempArray[i]){
         tempArray.splice(i, 1, newRec);
         this.setState({
